@@ -36,6 +36,6 @@ jobs:
 
     - name: Deploy Function App
       run: |
-        az functionapp create --name ${{ env.AZURE_FUNCTIONAPP_NAME }} --resource-group ${{ env.RESOURCE_GROUP }} --consumption-plan-location ${{ env.LOCATION }} --image ${{ env.CONTAINER_REGISTRY }}/${{ env.IMAGE_NAME }}:${{ env.TAG }} --storage-account ${{ env.STORAGE_ACCOUNT }} --functions-version 3 --os-type Linux
+        az functionapp create --name ${{ env.AZURE_FUNCTIONAPP_NAME }} --resource-group ${{ env.RESOURCE_GROUP }} --consumption-plan-location ${{ env.LOCATION }} --runtime custom --image ${{ env.CONTAINER_REGISTRY }}/${{ env.IMAGE_NAME }}:${{ env.TAG }} --storage-account ${{ env.STORAGE_ACCOUNT }} --functions-version 3 --os-type Linux
       env:
         AZURE_CREDENTIALS: ${{ secrets.AZURE_CREDENTIALS }}
