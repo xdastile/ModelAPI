@@ -12,7 +12,7 @@ env:
   RESOURCE_GROUP: 'rg-ml'
   TAG: '68dbdc686c1f83443458a66c4f2d003de7371c16'
   STORAGE_ACCOUNT: 'rgml8425'
-  PLAN: 'ASP-rgml-a1ce(EP1:1)'
+  PLAN: 'ASP-rgml-a1ce'
 
 jobs:
   build-and-deploy:
