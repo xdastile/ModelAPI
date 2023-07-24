@@ -4,9 +4,7 @@ env:
   CONTAINER_REGISTRY: modelcontainerxd.azurecr.io
 
 on:
-  push:
-    branches:
-      - main  # Change this to the branch you want to trigger the workflow on
+  workflow_dispatch:
 
 jobs:
   build-and-push:
