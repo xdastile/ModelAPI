@@ -12,6 +12,7 @@ env:
   RESOURCE_GROUP: 'rg-ml'
   TAG: '68dbdc686c1f83443458a66c4f2d003de7371c16'
   STORAGE_ACCOUNT: 'rgml8425'
+  LOCATION: 'eastus'
 
 jobs:
   build-and-deploy:
@@ -35,6 +36,6 @@ jobs:
 
     - name: Deploy Function App
       run: |
-        az functionapp create --name ${{ env.AZURE_FUNCTIONAPP_NAME }} --resource-group ${{ env.RESOURCE_GROUP }} --deployment-container-image-name ${{ env.CONTAINER_REGISTRY }}/${{ env.IMAGE_NAME }}:${{ env.TAG }} --storage-account ${{ env.STORAGE_ACCOUNT }}
+        az functionapp create --name ${{ env.AZURE_FUNCTIONAPP_NAME }} --resource-group ${{ env.RESOURCE_GROUP }} --consumption-plan-location ${{ env.LOCATION }} --image ${{ env.CONTAINER_REGISTRY }}/${{ env.IMAGE_NAME }}:${{ env.TAG }} --storage-account ${{ env.STORAGE_ACCOUNT }}
       env:
         AZURE_CREDENTIALS: ${{ secrets.AZURE_CREDENTIALS }}
