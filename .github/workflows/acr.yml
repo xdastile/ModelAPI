@@ -1,7 +1,8 @@
 name: Azure ACR Push
+
 env:
-  IMAGE_NAME: modelimage
-  CONTAINER_REGISTRY: modelcontainerxd.azurecr.io
+  IMAGE_NAME: 'modelimage'
+  CONTAINER_REGISTRY: 'modelcontainerxd.azurecr.io'
 
 on:
   workflow_dispatch:
