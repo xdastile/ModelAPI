@@ -1,0 +1,35 @@
+name: Infrastructure as Code
+
+env:
+  REGISTRY_NAME: 'modelcontainerxd'
+  RESOURCE_GROUP: 'rg-ml'
+  LOCATION: 'eastus'
+  STORAGE_ACCOUNT: 'rgml8427'
+
+on:
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+  
+    steps:
+    - name: Checkout the Code
+      uses: actions/checkout@v2
+    - name: Azure login
+      uses: azure/login@v1
+      with:
+        creds: ${{ secrets.AZURE_CREDENTIALS }}
+    - name: Create ACR
+      run: |
+        az acr create \
+        --resource-group ${{ env.RESOURCE_GROUP }} \
+        --name ${{ env.REGISTRY_NAME }} \
+        --location ${{ env.LOCATION }} \ 
+        --admin-enabled \
+        --sku Standard \
+        --public-network-enabled true
+    - name: Create Account Storage
+      run: az storage account create -n ${{ env.STORAGE_ACCOUNT }} -g ${{ env.RESOURCE_GROUP }} -l ${{ env.LOCATION }} --sku Standard_LRS
+
+
