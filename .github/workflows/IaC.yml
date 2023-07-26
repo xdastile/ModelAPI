@@ -21,14 +21,7 @@ jobs:
       with:
         creds: ${{ secrets.AZURE_CREDENTIALS }}
     - name: Create ACR
-      run: |
-        az acr create \
-        --resource-group ${{ env.RESOURCE_GROUP }} \
-        --name ${{ env.REGISTRY_NAME }} \
-        --location ${{ env.LOCATION }} \ 
-        --admin-enabled \
-        --sku Standard \
-        --public-network-enabled true
+      run: az acr create --resource-group ${{ env.RESOURCE_GROUP }} --name ${{ env.REGISTRY_NAME }} --location ${{ env.LOCATION }} --admin-enabled --sku Standard --public-network-enabled true
     - name: Create Account Storage
       run: az storage account create -n ${{ env.STORAGE_ACCOUNT }} -g ${{ env.RESOURCE_GROUP }} -l ${{ env.LOCATION }} --sku Standard_LRS
 
