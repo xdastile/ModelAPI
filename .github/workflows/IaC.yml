@@ -7,6 +7,7 @@ env:
   STORAGE_ACCOUNT: 'rgml8427'
   AZURE_FUNCTIONAPP_NAME: modeldeployxd
   PLAN: 'RG-appservice'
+  SKU_PLAN: 'EP1'
 
 on:
   workflow_dispatch:
@@ -42,5 +43,5 @@ jobs:
     - name: Create Account Storage
       run: az storage account create -n ${{ env.STORAGE_ACCOUNT }} -g ${{ env.RESOURCE_GROUP }} -l ${{ env.LOCATION }} --sku Standard_LRS
     - name: Create App Service Plan
-      run: az appservice plan create -g ${{ env.RESOURCE_GROUP }} -n ${{ env.PLAN }} --is-linux --number-of-workers 1 --sku EP1
+      run: az functionapp plan create --name ${{ env.PLAN }} --resource-group ${{ env.RESOURCE_GROUP }} --location ${{ env.LOCATION }} --sku ${{ env.SKU_PLAN }}
     
