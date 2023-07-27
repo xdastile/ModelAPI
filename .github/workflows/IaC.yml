@@ -6,7 +6,7 @@ env:
   LOCATION: 'eastus'
   STORAGE_ACCOUNT: 'rgml8427'
   AZURE_FUNCTIONAPP_NAME: modeldeployxd
-  PLAN: 'ASP-rgml-a1ce'
+  PLAN: 'RG-appservice'
 
 on:
   workflow_dispatch:
@@ -41,7 +41,6 @@ jobs:
       run: az acr create --resource-group ${{ env.RESOURCE_GROUP }} --name ${{ env.REGISTRY_NAME }} --location ${{ env.LOCATION }} --admin-enabled --sku Standard --public-network-enabled true
     - name: Create Account Storage
       run: az storage account create -n ${{ env.STORAGE_ACCOUNT }} -g ${{ env.RESOURCE_GROUP }} -l ${{ env.LOCATION }} --sku Standard_LRS
-    - name: Create Azure Function
-      run: az functionapp create --name ${{ env.AZURE_FUNCTIONAPP_NAME }} --resource-group ${{ env.RESOURCE_GROUP }} --consumption-plan-location westeurope --runtime python --storage-account ${{ env.STORAGE_ACCOUNT }} --functions-version 4 --os-type Linux
-
-
+    - name: Create App Service Plan
+      run: az appservice plan create -g ${{ env.RESOURCE_GROUP }} -n ${{ env.PLAN }} --is-linux --number-of-workers 1 --sku EP1
+    
