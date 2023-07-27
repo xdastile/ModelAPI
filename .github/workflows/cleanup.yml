@@ -9,6 +9,7 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+    steps:
     - name: Checing Out Code
       uses: actions/checkout@v2
     - name: Remove all resources
