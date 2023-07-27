@@ -13,4 +13,4 @@ jobs:
     - name: Checing Out Code
       uses: actions/checkout@v2
     - name: Remove all resources
-      run: az group delete --name ${{ env.RESOURCE_GROUP }}
+      run: az group delete --name ${{ env.RESOURCE_GROUP }} --yes
