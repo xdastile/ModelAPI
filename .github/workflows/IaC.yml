@@ -43,5 +43,5 @@ jobs:
     - name: Create Account Storage
       run: az storage account create -n ${{ env.STORAGE_ACCOUNT }} -g ${{ env.RESOURCE_GROUP }} -l ${{ env.LOCATION }} --sku Standard_LRS
     - name: Create App Service Plan
-      run: az functionapp plan create --name ${{ env.PLAN }} --resource-group ${{ env.RESOURCE_GROUP }} --location ${{ env.LOCATION }} --sku ${{ env.SKU_PLAN }}
+      run: az functionapp plan create --name ${{ env.PLAN }} --resource-group ${{ env.RESOURCE_GROUP }} --location ${{ env.LOCATION }} --sku ${{ env.SKU_PLAN }} --is-linux true
     
