@@ -10,7 +10,7 @@ env:
   RESOURCE_GROUP: 'RG'
   TAG: '55e7a8de4c31d0e04922d482c96f2ff00f482d9c'
   STORAGE_ACCOUNT: 'rgml8427'
-  PLAN: 'ASP-rgml-a1ce'
+  PLAN: 'RG-appservice'
 
 jobs:
   build-and-deploy:
